@@ -25,7 +25,7 @@ let persons = [{
 	{
 		name: 'Marina',
 		gender: 'female',
-		born: 1994
+		born: 1998
 	},
 	{
 		name: 'Leonid',
@@ -45,25 +45,29 @@ let persons = [{
 	{
 		name: 'Ludmila',
 		gender: 'female',
-		born: 1980
+		born: 2001
 	}
 ]
 
-
+let countNew = persons.length;
 let summ = 0;
 let count = persons.length;
 let countMale = 0;
 let countFemale = 0;
+let currentDate = new Date().getFullYear();
 
+for (i = 0; i < count; i++) {
+
+	if (persons[i].born != undefined) {
+		summ += currentDate - persons[i].born;
+	} else {
+		countNew--;
+	}
+}
+console.log('Средний возраст:' + (summ / countNew));
 
 
 for (i = 0; i < count; i++) {
-	let age = (new Date()).getFullYear() - persons[i].born;
-	summ += age / count;
-}
-console.log('Средний возраст:' + summ);
-
-for (var i = 0; i < count; i++) {
 	if (persons[i].gender === 'male') {
 		countMale++;
 	} else {
