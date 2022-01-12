@@ -12,7 +12,7 @@
 
 
 
-let persons = [{
+const persons = [{
 		name: 'Andru',
 		gender: 'male',
 		born: 1990
