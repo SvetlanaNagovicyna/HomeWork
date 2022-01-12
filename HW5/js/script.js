@@ -49,22 +49,21 @@ const persons = [{
 	}
 ]
 
-let countNew = persons.length;
 let summ = 0;
-let count = persons.length;
+let count = 0;
 let countMale = 0;
 let countFemale = 0;
 let currentDate = new Date().getFullYear();
 
-for (i = 0; i < count; i++) {
 
-	if (persons[i].born != undefined) {
+for (i = 0; i < persons.length; i++) {
+
+	if (persons[i].born !== undefined) {
 		summ += currentDate - persons[i].born;
-	} else {
-		countNew--;
+		count++;
 	}
 }
-console.log('Средний возраст:' + (summ / countNew));
+console.log('Средний возраст:' + (summ / count));
 
 
 for (i = 0; i < count; i++) {
