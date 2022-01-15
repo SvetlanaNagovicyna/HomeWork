@@ -28,7 +28,7 @@ const arr = [1, 2, 3, 4, 5, 6];
 
 function clone(array) {
 
-	var newArr = [];
+	const newArr = [];
 
 	array.forEach(function (item, index) {
 
@@ -55,13 +55,13 @@ console.log(brr);
 
 
 
-// var arr = [
+// const arr = [
 // 	[11, 22], 2, 3, 4, 5, 6
 // ];
 
 // function clone(array) {
 
-// 	var newArr = [];
+// 	const newArr = [];
 
 // 	array.forEach(function (item, index) {
 
