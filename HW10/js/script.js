@@ -58,7 +58,7 @@ console.log(mas([4, 5, 6, 1, 1], [30, 32, true]))
 // REDUCE
 
 
-function mas(arr1, arr2) {
+function masR(arr1, arr2) {
 
 	const reducer = (summ, item) => {
 		if (typeof item === 'number') {
@@ -79,9 +79,9 @@ function mas(arr1, arr2) {
 
 }
 
-console.log(mas([4, 5, 6, 1, 1], [30, 32, 54]))
-console.log(mas([4, 5, 6, 1, 1], [30, 32, '54']))
-console.log(mas([4, 5, 6, 1, 1], [30, 32, true]))
+console.log(masR([4, 5, 6, 1, 1], [30, 32, 54]))
+console.log(masR([4, 5, 6, 1, 1], [30, 32, '54']))
+console.log(masR([4, 5, 6, 1, 1], [30, 32, true]))
 
 
 
