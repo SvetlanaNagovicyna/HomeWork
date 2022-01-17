@@ -24,13 +24,20 @@ function f(a = 2, b = 3, c) {
 
 	const sum2 = sum(a, b);
 
-	if (typeof c === 'function') {
-		return c(a, b);
+	if (typeof c === 'function' && c() !== undefined) {
+		return c();
+	} else {
+		return sum2;
 	}
-
-	return sum2;
-
 }
 
 const result = f(7, 41);
+console.log(result);
+
+
+const result = f(7, 41, function с() {
+	const d = 3;
+	const e = 5;
+	return d * e;
+});
 console.log(result);

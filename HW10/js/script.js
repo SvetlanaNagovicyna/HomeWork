@@ -10,10 +10,10 @@
 //-------------------------------Задание 1 -------------------------------------
 const myArr = [];
 
-function array(arr) {
-	for (let i = 0; i < 5; i++) {
+function array(arr, arrlength1, arrlength2) {
+	for (let i = 0; i < arrlength1; i++) {
 		arr[i] = [];
-		for (let j = 0; j < 2; j++) {
+		for (let j = 0; j < arrlength2; j++) {
 			const a = Math.round(Math.random() * 100);
 			arr[i].push(a);
 		}
@@ -23,21 +23,24 @@ function array(arr) {
 
 }
 
-console.log(array(myArr));
+console.log(array(myArr, 7, 8));
 
 //-------------------------------Задание 2 -------------------------------------
 
 function mas(arr1, arr2) {
 	let sum1 = 0;
-
-	for (let i = 0; i < arr1.length; i++) {
-		sum1 += arr1[i];
-	}
-
 	let sum2 = 0;
 
+	for (let i = 0; i < arr1.length; i++) {
+		if (typeof arr1[i] === 'number') {
+			sum1 += arr1[i];
+		}
+	}
+
 	for (let j = 0; j < arr2.length; j++) {
-		sum2 += arr2[j];
+		if (typeof arr2[j] === 'number') {
+			sum2 += arr2[j];
+		}
 	}
 
 	if (sum1 > sum2) {
@@ -49,6 +52,41 @@ function mas(arr1, arr2) {
 }
 
 console.log(mas([4, 5, 6, 1, 1], [30, 32, 54]))
+console.log(mas([4, 5, 6, 1, 1], [30, 32, '54']))
+console.log(mas([4, 5, 6, 1, 1], [30, 32, true]))
+
+// REDUCE
+
+
+function mas(arr1, arr2) {
+
+	const reducer = (summ, item) => {
+		if (typeof item === 'number') {
+			return summ + item;
+		}
+	}
+
+	const sum1 = arr1.reduce(reducer, 0)
+	const sum2 = arr2.reduce(reducer, 0)
+
+
+
+	if (sum1 > sum2) {
+		return arr1;
+	} else {
+		return arr2;
+	}
+
+}
+
+console.log(mas([4, 5, 6, 1, 1], [30, 32, 54]))
+console.log(mas([4, 5, 6, 1, 1], [30, 32, '54']))
+console.log(mas([4, 5, 6, 1, 1], [30, 32, true]))
+
+
+
+
+
 
 //------------------------------Задание 3--------------------------------------
 
