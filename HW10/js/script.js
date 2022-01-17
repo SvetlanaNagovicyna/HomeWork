@@ -44,9 +44,9 @@ function mas(arr1, arr2) {
 	}
 
 	if (sum1 > sum2) {
-		return arr1;
+		return sum1;
 	} else {
-		return arr2;
+		return sum2;
 	}
 
 }
@@ -63,18 +63,21 @@ function masR(arr1, arr2) {
 	const reducer = (summ, item) => {
 		if (typeof item === 'number') {
 			return summ + item;
+		} else {
+			return summ;
 		}
 	}
 
-	const sum1 = arr1.reduce(reducer, 0)
-	const sum2 = arr2.reduce(reducer, 0)
+	const sum1 = arr1.reduce(reducer, 0);
+
+	const sum2 = arr2.reduce(reducer, 0);
 
 
 
 	if (sum1 > sum2) {
-		return arr1;
+		return sum1;
 	} else {
-		return arr2;
+		return sum2;
 	}
 
 }
