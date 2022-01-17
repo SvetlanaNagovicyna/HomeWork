@@ -8,35 +8,35 @@
 
 
 //-------------------------------Задание 1 -------------------------------------
-/*const myArr = [];
+const myArr = [];
 
-	function array(arr) {
-		for (i = 0; i < 5; i++) {
-			arr[i] = [];
-			for (j = 0; j < 2; j++) {
-				const a = Math.round(Math.random() * 100);
-			    arr[i].push(a);
-		    }
+function array(arr) {
+	for (let i = 0; i < 5; i++) {
+		arr[i] = [];
+		for (let j = 0; j < 2; j++) {
+			const a = Math.round(Math.random() * 100);
+			arr[i].push(a);
 		}
-	
-	return arr;
-
 	}
 
-console.log(array(myArr));*/
+	return arr;
+
+}
+
+console.log(array(myArr));
 
 //-------------------------------Задание 2 -------------------------------------
 
-/*function mas(arr1, arr2) {
+function mas(arr1, arr2) {
 	let sum1 = 0;
-	
-	for (i = 0; i < arr1.length; i++) {
+
+	for (let i = 0; i < arr1.length; i++) {
 		sum1 += arr1[i];
 	}
 
 	let sum2 = 0;
 
-	for (j = 0; j < arr2.length; j++) {
+	for (let j = 0; j < arr2.length; j++) {
 		sum2 += arr2[j];
 	}
 
@@ -48,7 +48,7 @@ console.log(array(myArr));*/
 
 }
 
-console.log(mas([4, 5, 6, 1, 1], [30, 32, 54]))*/
+console.log(mas([4, 5, 6, 1, 1], [30, 32, 54]))
 
 //------------------------------Задание 3--------------------------------------
 
