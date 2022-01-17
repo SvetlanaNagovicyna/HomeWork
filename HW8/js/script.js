@@ -12,7 +12,7 @@
 
 
 function call(func, num, a) {
-	for (i = 0; i < num; i++) {
+	for (let i = 0; i < num; i++) {
 		func(a);
 	}
 }
