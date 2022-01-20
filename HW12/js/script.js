@@ -10,13 +10,9 @@
 
 
 function simple(num) {
-	let res = 1;
-	if (num === 1) {
-		res = 1;
-	} else {
-		for (let i = 2; i <= num; i++) {
-			res = res - i;
-		}
+	let res = 2;
+	for (let i = 1; i <= num; i++) {
+		res = res - i;
 	}
 
 	return res;

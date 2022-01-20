@@ -23,8 +23,9 @@ const arr = [-246, 753, -468, 475, -683, 476, -583, 746, -581];
 
 let sum = 0;
 
-const sum = arr.reduce(function (a, b) {
-	return a + b;
+arr.reduce(function (a, b) {
+	sum = a + b;
+	return sum;
 });
 
 console.log("Сумма:" + sum);
