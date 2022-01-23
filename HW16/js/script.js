@@ -27,7 +27,7 @@ function createTable(rowCount, colCount) {
 	return table;
 
 }
-var tab = createTable(10, 10);
+const tab = createTable(10, 10);
 document.body.appendChild(tab);
 
 
