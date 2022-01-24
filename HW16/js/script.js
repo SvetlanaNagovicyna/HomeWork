@@ -12,11 +12,11 @@ function createTable(rowCount, colCount) {
 	let num = 0;
 
 	for (let i = 0; i < rowCount; i++) {
-		let row = document.createElement('tr');
+		const row = document.createElement('tr');
 		for (let j = 0; j < colCount; j++) {
 			num += 1;
-			let col = document.createElement('td');
-			let text = document.createTextNode(num);
+			const col = document.createElement('td');
+			const text = document.createTextNode(num);
 			row.appendChild(col);
 			col.appendChild(text);
 
