@@ -49,10 +49,8 @@ function getNumberOfEven(n) {
 
 	for (let i = 0; i < str.length; i++) {
 
-		if (!(str.charAt(i) % 2)) {
+		if (!(str[i] % 2)) {
 			count++;
-		} else {
-			count;
 		}
 	}
 	return count;
