@@ -28,20 +28,36 @@ function getSymbolIndex(str, symbol) {
 	return str.indexOf(symbol)
 }
 
+// function getNumberOfEven(n) {
+
+// 	return n.toString().split('').reduce(function (count, current) {
+
+// 		if (!(current % 2)) {
+// 			count++;
+// 			}
+
+// 		return count;
+
+// 	}, 0);
+// }
+
+
+
 function getNumberOfEven(n) {
+	let count = 0;
+	const str = n.toString();
 
-	const NumberOfEven = n.toString().split('').reduce(function (count, current) {
+	for (let i = 0; i < str.length; i++) {
 
-		if (!(current % 2)) {
+		if (!(str.charAt(i) % 2)) {
 			count++;
+		} else {
+			count;
 		}
-
-		return count;
-
-	}, 0);
-
-	return NumberOfEven;
+	}
+	return count;
 }
+
 
 console.log(isSymbolPresentInString('привввввет', 'в')) // true
 console.log(isSymbolPresentInString('привввввет', 'й')) // false
