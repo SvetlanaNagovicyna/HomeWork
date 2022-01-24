@@ -32,8 +32,9 @@ function getNumberOfEven(n) {
 
 	const NumberOfEven = n.toString().split('').reduce(function (count, current) {
 
-		if (!(current % 2))
+		if (!(current % 2)) {
 			count++;
+		}
 
 		return count;
 
