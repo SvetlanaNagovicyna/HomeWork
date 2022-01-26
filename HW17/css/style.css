@@ -24,7 +24,7 @@ body {
 }
 
 .time span {
-	font-size: 50px;
+	font-size: 45px;
 	margin: 0 5px;
 	display: flex;
 	align-items: center;
@@ -41,6 +41,7 @@ body {
 .time span:last-child::after {
 	display: none;
 }
+
 
 
 .btn {
