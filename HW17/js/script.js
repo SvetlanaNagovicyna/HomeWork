@@ -7,14 +7,10 @@
 * сделать старт секундомера по клику на кнопку
 
 */
-const fieldSec = document.querySelector('.stopwatch');
 
-document.addEventListener("DOMContentLoaded", () => {
-	for (let i = 0; i < 100; i++) {
-		(function sec(i) {
-			setTimeout(function () {
-				fieldSec.innerHTML = i;
-			}, 1000 * i)
-		})(i);
-	}
-});
+
+let timerInterval;
+let timer = 0;
+const minute = document.querySelector('#minute');
+const sec = document.querySelector('#sec');
+const ms = document.querySelector('#ms');
