@@ -1,0 +1,46 @@
+body {
+	min-height: 100%;
+	height: 100%;
+}
+
+.popup-btn {
+	outline: none;
+	border: none;
+	background: #0e0e95;
+	color: #fff;
+	height: 100%;
+	padding: 10px 30px;
+	cursor: pointer;
+}
+.popup-wrap {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	visibility: hidden;
+}
+.popup {
+	width: 70%;
+	background-color: white;
+	padding: 20px;
+	font-size: 30px;
+	border-radius: 10px;
+	position: relative;
+
+}
+.close {
+	position: absolute;
+	right: 8px;
+    top: 0;
+	cursor: pointer;
+}
+.open {
+	opacity: 1;
+	visibility: visible;
+}
