@@ -16,11 +16,16 @@
 // document.querySelectorAll('.popup-wrap').forEach(wrap => {
 // 	wrap.addEventListener('click', event => {
 // 		const eventTarg = event.target;
-// 		if (eventTarg.closest('.close')) {
+// 		console.log(eventTarg);
+
+// 		if (eventTarg.closest('.close') || eventTarg === wrap) {
 // 			wrap.classList.remove('open')
 // 		}
 // 	})
 // })
+
+
+
 
 document.querySelectorAll('.popup2').forEach(btn => {
 	btn.addEventListener('click', function () {
