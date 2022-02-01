@@ -15,8 +15,11 @@ document.querySelectorAll('.popup-btn').forEach(btn => {
 
 document.querySelectorAll('.popup-wrap').forEach(wrap => {
 	wrap.addEventListener('click', event => {
+
 		const eventTarg = event.target;
-		if (eventTarg.classList.contains('close')) {
+		console.log(eventTarg);
+
+		if (eventTarg.classList.contains('close') || eventTarg.parentElement.classList.contains('close')) {
 			wrap.classList.remove('open')
 		}
 	})
