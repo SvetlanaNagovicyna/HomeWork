@@ -5,6 +5,7 @@
 */
 
 
+
 document.querySelectorAll('.popup-btn').forEach(btn => {
 	btn.addEventListener('click', function () {
 		const popupBlock = document.querySelector('#' + btn.dataset.popup);
@@ -13,8 +14,9 @@ document.querySelectorAll('.popup-btn').forEach(btn => {
 });
 
 document.querySelectorAll('.popup-wrap').forEach(wrap => {
-	wrap.addEventListener('click', () => {
-		if (wrap.classList.contains('open')) {
+	wrap.addEventListener('click', event => {
+		const eventTarg = event.target;
+		if (eventTarg.classList.contains('close')) {
 			wrap.classList.remove('open')
 		}
 	})

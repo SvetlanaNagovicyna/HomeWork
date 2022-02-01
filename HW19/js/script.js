@@ -6,16 +6,15 @@
 
 */
 
+let redItem;
+
 
 document.querySelectorAll('.item').forEach(function (item) {
 	item.addEventListener('click', function () {
-
-		const redItem = document.querySelector('.item.red');
-
 		if (redItem) {
 			redItem.classList.remove('red');
 		}
-
-		this.classList.add('red');
+		this.classList.add('red')
+		redItem = this;
 	})
 })
