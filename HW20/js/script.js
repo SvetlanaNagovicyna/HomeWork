@@ -19,7 +19,7 @@ document.querySelectorAll('.popup-wrap').forEach(wrap => {
 		const eventTarg = event.target;
 		console.log(eventTarg);
 
-		if (eventTarg.classList.contains('close') || eventTarg.parentElement.classList.contains('close')) {
+		if (eventTarg.classList.contains('close') || eventTarg.closest('.close')) {
 			wrap.classList.remove('open')
 		}
 	})
