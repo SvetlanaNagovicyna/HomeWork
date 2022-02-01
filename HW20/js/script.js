@@ -8,7 +8,7 @@
 
 document.querySelectorAll('.popup-btn').forEach(btn => {
 	btn.addEventListener('click', function () {
-		const popupBlock = document.querySelector('#' + btn.dataset.popup);
+		const popupBlock = document.querySelector('.' + btn.dataset.popup);
 		popupBlock.classList.add('open');
 	})
 });
