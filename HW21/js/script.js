@@ -87,12 +87,12 @@ function some(arr, fn) {
 
 	for (let i = 0; i < arr.length; i++) {
 		element = fn(arr[i]);
-	}
 
-	if (element === true) {
-		return true
-	} else {
-		return false
+		if (element === true) {
+			return true
+		} else {
+			return false
+		}
 	}
 
 }
@@ -102,3 +102,18 @@ let fnSome = some([23, 4, 2, 34, 24, 2], function (item) {
 })
 
 console.log(fnSome);
+
+
+// reduce
+
+function reduce(arr, acc) {
+
+	for (let i = 0; i < arr.length; i++) {
+		acc += arr[i];
+	}
+	return acc;
+}
+
+let fnReduce = reduce([23, 4, 2, 34, 24, 2], 0);
+
+console.log(fnReduce);
