@@ -18,7 +18,7 @@ function calc() {
 	option.forEach(el => {
 		if (el.selected === true) {
 			const totalValue = el.value * inputValue;
-			total.textContent = parseInt((totalValue) * 100) / 100 + ' ₴';
+			total.textContent = totalValue.toFixed(2) + ' ₴';
 		}
 	})
 }
