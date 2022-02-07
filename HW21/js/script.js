@@ -98,17 +98,17 @@ let fnSome = some([23, 4, 2, 34, 24, 2], function (item) {
 
 // reduce
 
-function reduce(arr, fn, acc) {
+// function reduce(arr, fn, acc) {
 
-	for (let i = 0; i < arr.length; i++) {
-		acc += fn(acc, arr[i]);
-	}
-	return acc;
-}
+// 	for (let i = 0; i < arr.length; i++) {
+// 		acc += fn(acc, arr[i]);
+// 	}
+// 	return acc;
+// }
 
-let fnReduce = reduce([23, 4, 2, 34, 24, 2], function (acc, currentValue, index, array) {
-	return acc += currentValue;
-}, 0);
+// let fnReduce = reduce([23, 4, 2, 34, 24, 2], function (acc, currentValue, index, array) {
+// 	return acc += currentValue;
+// }, 0);
 
 // console.log(fnReduce);
 
@@ -117,32 +117,44 @@ let fnReduce = reduce([23, 4, 2, 34, 24, 2], function (acc, currentValue, index,
 //reduce 
 
 
-// const array = [24, 4, 2, 34, 24, 2];
+const array = [23, 4, 2, 34, 24, 2];
 
 
-// let re = array.reduce(function (previousValue, currentValue, index) {
+let re = array.reduce(function (previousValue, currentValue, index) {
 
-// 	previousValue[index] = currentValue;
-
-// 	return previousValue;
-
-// }, {})
-
-// console.log(re)
+	previousValue[`${index}`] = currentValue;
 
 
+	return previousValue;
+
+}, {})
+
+console.log(re)
+
+//reduce 2
 
 function reduce(arr, fn, acc) {
 
 	for (let i = 0; i < arr.length; i++) {
-		acc += fn(acc, arr[i]);
+		acc = fn(acc, arr[i], i);
 	}
+
 	return acc;
+
 }
 
-let fnReduce = reduce([23, 4, 2, 34, 24, 2], function (previousValue, currentValue, index, array) {
-	previousValue[index] = currentValue;
-	return previousValue;
+let fnReduce = reduce([23, 4, 2, 34, 24, 2], function (acc, currentValue, index) {
+	acc[`${index}`] = currentValue;
+	return acc;
+}, {});
+
+
+/** Ещё одна проверка */
+
+let fnReduce1 = reduce([23, 4, 2, 34, 24, 2], function (acc, currentValue, index) {
+	return acc += currentValue;
 }, 0);
 
-// console.log(fnReduce);
+
+console.log(fnReduce);
+console.log(fnReduce1);
