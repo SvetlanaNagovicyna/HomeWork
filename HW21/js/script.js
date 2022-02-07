@@ -15,13 +15,13 @@ function map(arr, fn) {
 
 	for (let i = 0; i < arr.length; i++) {
 
-		newArr[i] = fn(arr[i]);
+		newArr[i] = fn(arr[i], i, arr);
 	}
 
 	return newArr;
 }
 
-let fnMap = map([23, 4, 2, 34, 24, 2], function (item) {
+let fnMap = map([23, 4, 2, 34, 24, 2], function (item, i, arr) {
 	return item * 2;
 })
 
@@ -38,7 +38,7 @@ function filter(arr, fn) {
 	for (let i = 0; i < arr.length; i++) {
 
 
-		if (fn(arr[i])) {
+		if (fn(arr[i], i, arr)) {
 
 			newArr.push(arr[i]);
 		}
@@ -61,7 +61,7 @@ function every(arr, fn) {
 	let element;
 
 	for (let i = 0; i < arr.length; i++) {
-		element = fn(arr[i]);
+		element = fn(arr[i], i, arr);
 	}
 
 	if (element === true) {
@@ -86,7 +86,7 @@ function some(arr, fn) {
 	let element;
 
 	for (let i = 0; i < arr.length; i++) {
-		element = fn(arr[i]);
+		element = fn(arr[i], i, arr);
 
 		if (element === true) {
 			return true
