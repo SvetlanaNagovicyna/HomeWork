@@ -18,7 +18,7 @@ function calc() {
 	option.forEach(el => {
 		if (el.selected === true) {
 			const totalValue = el.value * inputValue;
-			total.textContent = parseInt((totalValue) * 100) / 100;
+			total.textContent = parseInt((totalValue) * 100) / 100 + ' ₴';
 		}
 	})
 }
@@ -26,7 +26,7 @@ function calc() {
 calc();
 
 
-input.addEventListener('change', () => {
+input.addEventListener('input', () => {
 
 	calc()
 
