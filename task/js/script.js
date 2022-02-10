@@ -89,14 +89,13 @@ function clone(par) {
 					newPar[index] = item;
 				}
 			} else {
-				newPar = par;
+				newPar[index] = clone(item);
 			}
 		})
 	}
 
 	return newPar;
 }
-
 
 
 const oj = [324, {
