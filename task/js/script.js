@@ -13,33 +13,44 @@
 
 
 
+
 // function clone(par) {
 
 // 	let newPar;
 
-// 	if (par instanceof Object && !Array.isArray(par)) {
+// 	if (!Array.isArray(par)) {
 // 		newPar = {};
-// 		for (let key in par) {
-// 			if (key instanceof Object && !Array.isArray(par[key])) {
-// 				newPar[key] = clone(par[key]);
-// 			} else {
-// 				newPar[key] = par[key];
-// 			}
-// 		}
-// 	} else {
-// 		if (Array.isArray(par)) {
-// 			newPar = [];
-// 			par.forEach(function (item, index) {
-// 				if (!Array.isArray(item)) {
-// 					newPar[index] = item;
+// 		if (par instanceof Object) {
+// 			for (let key in par) {
+// 				if (!Array.isArray(par[key])) {
+// 					if (par[key] instanceof Object) {
+// 						newPar[key] = clone(par[key]);
+// 					} else {
+// 						newPar[key] = par[key];
+// 					}
 // 				} else {
-// 					newPar[index] = clone(item);
+// 					newPar[key] = clone(par[key]);
 // 				}
-// 			})
+// 			}
 // 		} else {
 // 			newPar = par;
 // 		}
+
+// 	} else {
+// 		newPar = [];
+// 		par.forEach(function (item, index) {
+// 			if (!Array.isArray(item)) {
+// 				if (par instanceof Object) {
+// 					newPar[index] = clone(item);
+// 				} else {
+// 					newPar[index] = item;
+// 				}
+// 			} else {
+// 				newPar[index] = clone(item);
+// 			}
+// 		})
 // 	}
+
 // 	return newPar;
 // }
 
@@ -53,41 +64,35 @@ function clone(par) {
 
 	let newPar;
 
-	if (!Array.isArray(par)) {
-		newPar = {};
-		if (par instanceof Object) {
+	if (par instanceof Object) {
+		if (!Array.isArray(par)) {
+			newPar = {};
 			for (let key in par) {
-				if (!Array.isArray(par[key])) {
-					if (par[key] instanceof Object) {
-						newPar[key] = clone(par[key]);
-					} else {
-						newPar[key] = par[key];
-					}
-				} else {
+				if (par[key] instanceof Object) {
 					newPar[key] = clone(par[key]);
+				} else {
+					newPar[key] = par[key];
 				}
 			}
 		} else {
-			newPar = par;
-		}
-
-	} else {
-		newPar = [];
-		par.forEach(function (item, index) {
-			if (!Array.isArray(item)) {
-				if (par instanceof Object) {
+			newPar = [];
+			par.forEach(function (item, index) {
+				if (item instanceof Object) {
 					newPar[index] = clone(item);
 				} else {
 					newPar[index] = item;
 				}
-			} else {
-				newPar[index] = clone(item);
-			}
-		})
+			})
+		}
+	} else {
+		newPar = par;
 	}
-
 	return newPar;
 }
+
+
+
+
 
 const ob = {
 	a: 15,
