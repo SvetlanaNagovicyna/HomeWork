@@ -54,18 +54,17 @@ function clone(par) {
 	let newPar;
 
 	if (!Array.isArray(par)) {
+		newPar = {};
 		if (par instanceof Object) {
-
-			newPar = {};
 			for (let key in par) {
-				if (!Array.isArray(key)) {
-					if (key instanceof Object) {
-						newPar = clone(key);
+				if (!Array.isArray(par[key])) {
+					if (par[key] instanceof Object) {
+						newPar[key] = clone(par[key]);
 					} else {
 						newPar[key] = par[key];
 					}
 				} else {
-					newPar[key] = clone(key);
+					newPar[key] = clone(par[key]);
 				}
 			}
 		} else {
