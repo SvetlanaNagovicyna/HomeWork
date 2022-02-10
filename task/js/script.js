@@ -62,7 +62,7 @@ function clone(par) {
 					if (key instanceof Object) {
 						newPar = clone(key);
 					} else {
-						newPar[key] = key;
+						newPar[key] = par[key];
 					}
 				} else {
 					key.forEach(function (item, index) {
