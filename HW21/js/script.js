@@ -133,7 +133,7 @@ console.log(re)
 
 //reduce 2
 
-function reduce(arr, fn, acc) {
+function reduce(arr, fn, acc = 0) {
 
 	for (let i = 0; i < arr.length; i++) {
 		acc = fn(acc, arr[i], i);
