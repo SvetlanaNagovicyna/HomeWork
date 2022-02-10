@@ -65,14 +65,7 @@ function clone(par) {
 						newPar[key] = par[key];
 					}
 				} else {
-					key.forEach(function (item, index) {
-						newPar2 = [];
-						if (!Array.isArray(item)) {
-							newPar2[index] = item;
-						} else {
-							newPar2[index] = clone(item);
-						}
-					})
+					newPar[key] = clone(key);
 				}
 			}
 		} else {
@@ -97,13 +90,52 @@ function clone(par) {
 	return newPar;
 }
 
+const ob = {
+	a: 15,
+	b: {
+		c: [1, 2, 3],
+		d: 'sds'
+	},
+	k: [
+		1,
+		2,
+		{
+			v: {
+				g: 2
+			},
+			t: 'eee',
+			n: [2, 0, 3],
+			c: {
+				g: 2
+			}
+		},
+		null
+	]
+};
+const ar = [
+	[11, 22],
+	[
+		[3, 3], null
+	], 4, 5, {
+		g: 5,
+		y: 'dft'
+	}
+];
+const tr = clone(ar);
+tr[0][0] = 66;
+tr[4].g = 66;
+console.log(ar);
+console.log(tr);
 
-const oj = [324, {
-	't': 12
-}, 451]
-const result = clone(oj);
+const tf = clone(ob)
 
-oj[1].t = 66
-console.log(oj);
-console.log(result);
-console.log(JSON.stringify(oj) === JSON.stringify(result));
+console.log(JSON.stringify(ob) === JSON.stringify(tf));
+tf.b.c[0] = 66;
+tf.k[2].n[0] = 66;
+tf.k[2].t = 66;
+console.log(ob);
+console.log(tf);
+console.log(JSON.stringify(ob) === JSON.stringify(tf));
+console.log(clone(4));
+console.log(clone(null));
+console.log(clone('fdgd'));
