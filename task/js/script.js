@@ -12,7 +12,7 @@
 */
 
 
-
+//// большое моё 1
 
 // function clone(par) {
 
@@ -56,40 +56,102 @@
 
 
 
+// большое моё 2
 
 
 
+// function clone(par) {
+
+// 	let newPar;
+
+// 	if (par instanceof Object) {
+// 		if (!Array.isArray(par)) {
+// 			newPar = {};
+// 			for (let key in par) {
+// 				if (par[key] instanceof Object) {
+// 					newPar[key] = clone(par[key]);
+// 				} else {
+// 					newPar[key] = par[key];
+// 				}
+// 			}
+// 		} else {
+// 			newPar = [];
+// 			par.forEach(function (item, index) {
+// 				if (item instanceof Object) {
+// 					newPar[index] = clone(item);
+// 				} else {
+// 					newPar[index] = item;
+// 				}
+// 			})
+// 		}
+// 	} else {
+// 		newPar = par;
+// 	}
+// 	return newPar;
+// }
+
+
+// большое моё 3
 
 function clone(par) {
 
-	let newPar;
+	let newPar = par;
 
 	if (par instanceof Object) {
 		if (!Array.isArray(par)) {
 			newPar = {};
 			for (let key in par) {
-				if (par[key] instanceof Object) {
-					newPar[key] = clone(par[key]);
-				} else {
-					newPar[key] = par[key];
-				}
+				newPar[key] = clone(par[key]);
 			}
 		} else {
 			newPar = [];
 			par.forEach(function (item, index) {
-				if (item instanceof Object) {
-					newPar[index] = clone(item);
-				} else {
-					newPar[index] = item;
-				}
+				newPar[index] = clone(item);
 			})
 		}
-	} else {
-		newPar = par;
 	}
+
 	return newPar;
 }
 
+
+// большое моё 4
+//   function clone(par) {
+
+// 	let newPar = par;
+
+// 	if (par instanceof Object) {
+// 	  newPar = Array.isArray(par) ? [] : {};
+// 	  if (!Array.isArray(par)) {
+// 		for (let key in par) {
+// 		  newPar[key] = clone(par[key]);
+// 		}
+// 	  } else {
+// 		par.forEach(function (item, index) {
+// 		  newPar[index] = clone(item);
+// 		})
+// 	  }
+// 	}
+
+// 	return newPar;
+//   }
+
+
+// вариант Лёни
+// function clone(data) {
+
+// 	let newAny = data;
+
+// 	if (data instanceof Object) {
+// 		newAny = Array.isArray(data) ? [] : {};
+
+// 		for (let key in data) {
+// 			newAny[key] = clone(data[key]);
+// 		}
+// 	}
+
+// 	return newAny;
+// }
 
 
 
