@@ -370,7 +370,7 @@ input:focus {
 }
 
 .list-block__item.input-err {
-	outline: .1em solid red;
+	outline: .05em solid red;
 }
 
 /* Стили при нажатии на Done */
