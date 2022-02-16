@@ -12,70 +12,44 @@
 <body>
 
 	<div class="wrapper">
-		<div class="eye"> <img class="eyeImg" src="img/eye.svg" alt=""></div>
+		<div class="block-hide"> <img class="hide-img" src="img/eye.svg" alt=""></div>
 		<div class="title">Мой TODO</div>
 		<div class="header-block">
 			<div class="header-block__input">
-				<input class="value" type="text" placeholder="Введите текст">
+				<input id="new-text" class="input" type="text" value="" placeholder="Введите текст">
+				<label class="error">Поле не может быть пустым</label>
 			</div>
 			<div class="header-block__btns">
-				<button type="submit" class="add"> Добавить <img src="img/plus.svg" alt=""></button>
+				<button type="submit" class="add" id="add"> Добавить <img src="img/plus.svg" alt=""></button>
 			</div>
 		</div>
 		<div class="list-block">
-			<div class="list-block__item">
+			<div class="list-block__item check">
 				<div class="list-block__item-text">Молоко</div>
+				<input id="edit-text" class="value" type="text" value="">
 				<div class="list-block__btns">
-					<button class="edit" name="edit" title="редактировать">
-						<img class="editImg" src="img/pencil.svg" alt="">
+					<button class="edit">
+						<img class="edit-img" src="img/pencil.svg" alt="">
 					</button>
-					<button class="check" name="check" title="выполнено">
-						<img class="checkImg" src="img/check.svg" alt="">
+					<button class="done">
+						<img class="check-img" src="img/check.svg" alt="">
 					</button>
-					<button class="cross" name="cross" title="удалить">
-						<img class="crossImg" src="img/cross.svg" alt="">
+					<button class="remove">
+						<img class="remove-img" src="img/cross.svg" alt="">
 					</button>
 				</div>
 			</div>
 			<div class="list-block__item">
 				<div class="list-block__item-text">Молоко</div>
 				<div class="list-block__btns">
-					<button class="edit" name="edit" title="редактировать">
-						<img class="editImg" src="img/pencil.svg" alt="">
+					<button class="edit">
+						<img class="edit-img" src="img/pencil.svg" alt="">
 					</button>
-					<button class="check" name="check" title="выполнено">
-						<img class="checkImg" src="img/check.svg" alt="">
+					<button class="done">
+						<img class="check-img" src="img/check.svg" alt="">
 					</button>
-					<button class="cross" name="cross" title="удалить">
-						<img class="crossImg" src="img/cross.svg" alt="">
-					</button>
-				</div>
-			</div>
-			<div class="list-block__item">
-				<div class="list-block__item-text">Молоко</div>
-				<div class="list-block__btns">
-					<button class="edit" name="edit" title="редактировать">
-						<img class="editImg" src="img/pencil.svg" alt="">
-					</button>
-					<button class="check" name="check" title="выполнено">
-						<img class="checkImg" src="img/check.svg" alt="">
-					</button>
-					<button class="cross" name="cross" title="удалить">
-						<img class="crossImg" src="img/cross.svg" alt="">
-					</button>
-				</div>
-			</div>
-			<div class="list-block__item">
-				<div class="list-block__item-text">Молоко</div>
-				<div class="list-block__btns">
-					<button class="edit" name="edit" title="редактировать">
-						<img class="editImg" src="img/pencil.svg" alt="">
-					</button>
-					<button class="check" name="check" title="выполнено">
-						<img class="checkImg" src="img/check.svg" alt="">
-					</button>
-					<button class="cross" name="cross" title="удалить">
-						<img class="crossImg" src="img/cross.svg" alt="">
+					<button class="remove">
+						<img class="remove-img" src="img/cross.svg" alt="">
 					</button>
 				</div>
 			</div>

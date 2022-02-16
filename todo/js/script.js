@@ -1,117 +1,153 @@
-/* 
-
-ДЗ 23. сделать todo
-
-*/
+///////////////////////////////////////////////////////
 
 
-
-const input = document.querySelector('input.value');
-const addButton = document.querySelector('.add');
+const inputText = document.querySelector('#new-text');
+const addButton = document.querySelector('#add');
 const listBlock = document.querySelector('.list-block');
-const wrapListBlock = document.querySelector('.list-block');
-const show = document.querySelector('.eye');
+const buttonHide = document.querySelector('.block-hide');
+const buttonEdit = document.querySelector('.edit');
+const buttonDone = document.querySelector('.done');
+const buttonRemove = document.querySelector('.remove');
 
 
-function addItemList() {
-
-	const inputValue = input.value;
-
-
-	const $listBlockItem = document.createElement('div');
-	$listBlockItem.classList.add('list-block__item');
-
-	const $listBlockText = document.createElement('div')
-	$listBlockText.classList.add('list-block__item-text');
-
-	const $listBlockBtns = document.createElement('div');
-	$listBlockBtns.classList.add('list-block__btns');
+addButton.addEventListener('click', function () {
+	if (inputText.value !== '') {
 
 
+		const inputValue = inputText.value;
 
+		const $listBlockItem = document.createElement('div');
+		$listBlockItem.classList.add('list-block__item');
+
+		const $listBlockText = document.createElement('div')
+		$listBlockText.classList.add('list-block__item-text');
+
+		const $listBlockBtns = document.createElement('div');
+		$listBlockBtns.classList.add('list-block__btns');
+
+
+		document.querySelector('.list-block').appendChild($listBlockItem);
+
+		const appendBlockText = document.querySelector('.list-block').lastElementChild.appendChild($listBlockText);
+		appendBlockText.textContent = inputValue;
+		document.querySelector('.list-block').lastElementChild.appendChild($listBlockBtns);
+
+		inputText.value = '';
+		inputText.focus();
+		createButtonEdit();
+		createButtonDone();
+		createButtonRemove();
+		inputText.classList.remove('input-error');
+
+	} else {
+		inputText.focus();
+		inputText.classList.add('input-error');
+	}
+
+
+})
+
+
+function createButtonEdit() {
 	const $buttonEdit = document.createElement('button');
-	$buttonEdit.setAttribute('name', 'edit');
-	$buttonEdit.setAttribute('title', 'редактировать');
 	$buttonEdit.classList.add('edit');
-
-	const $buttonCheck = document.createElement('button');
-	$buttonCheck.setAttribute('name', 'check');
-	$buttonCheck.setAttribute('title', 'выполнено');
-	$buttonCheck.classList.add('check');
-
-	const $buttonСross = document.createElement('button');
-	$buttonСross.setAttribute('name', 'cross');
-	$buttonСross.setAttribute('title', 'удалить');
-	$buttonСross.classList.add('cross');
-
-
 
 	const $imgBtnEdit = document.createElement('img');
 	$imgBtnEdit.setAttribute('src', 'img/pencil.svg');
 	$imgBtnEdit.setAttribute('alt', '');
-	$imgBtnEdit.classList.add('editImg');
-
-	const $imgBtnCheck = document.createElement('img');
-	$imgBtnCheck.setAttribute('src', 'img/check.svg');
-	$imgBtnCheck.setAttribute('alt', '');
-	$imgBtnCheck.classList.add('checkImg');
-
-	const $imgBtnCross = document.createElement('img');
-	$imgBtnCross.setAttribute('src', 'img/cross.svg');
-	$imgBtnCross.setAttribute('alt', '');
-	$imgBtnCross.classList.add('crossImg');
-
-
-
-	const appendItem = document.querySelector('.list-block').appendChild($listBlockItem);
-
-	const appendBlockText = document.querySelector('.list-block').lastElementChild.appendChild($listBlockText);
-	appendBlockText.textContent = inputValue;
-	const appendBlockBtns = document.querySelector('.list-block').lastElementChild.appendChild($listBlockBtns);
+	$imgBtnEdit.classList.add('edit-img');
 
 	const appendButtonEdit = document.querySelector('.list-block').lastElementChild;
 	const buttonEdit = appendButtonEdit.querySelector('.list-block__btns').appendChild($buttonEdit)
-	const appendImgBtnEdit = buttonEdit.appendChild($imgBtnEdit);
+	buttonEdit.appendChild($imgBtnEdit);
+}
 
-	const appendButtonCheck = document.querySelector('.list-block').lastElementChild;
-	const buttonCheck = appendButtonCheck.querySelector('.list-block__btns').appendChild($buttonCheck)
-	const appendImgBtnCheck = buttonCheck.appendChild($imgBtnCheck);
+function createButtonDone() {
+	const $buttonDone = document.createElement('button');
+	$buttonDone.classList.add('done');
 
-	const appendButtonСross = document.querySelector('.list-block').lastElementChild;
-	const buttonСross = appendButtonСross.querySelector('.list-block__btns').appendChild($buttonСross)
-	const appendImgBtnСross = buttonСross.appendChild($imgBtnCross);
+	const $imgBtnDone = document.createElement('img');
+	$imgBtnDone.setAttribute('src', 'img/check.svg');
+	$imgBtnDone.setAttribute('alt', '');
+	$imgBtnDone.classList.add('check-img');
 
+	const appendButtonDone = document.querySelector('.list-block').lastElementChild;
+	const buttonDone = appendButtonDone.querySelector('.list-block__btns').appendChild($buttonDone)
+	buttonDone.appendChild($imgBtnDone);
+}
 
-	input.value = '';
+function createButtonRemove() {
+	const $buttonRemove = document.createElement('button');
+	$buttonRemove.classList.add('remove');
+
+	const $imgBtnRemove = document.createElement('img');
+	$imgBtnRemove.setAttribute('src', 'img/cross.svg');
+	$imgBtnRemove.setAttribute('alt', '');
+	$imgBtnRemove.classList.add('remove-img');
+
+	const appendButtonRemove = document.querySelector('.list-block').lastElementChild;
+	const buttonRemove = appendButtonRemove.querySelector('.list-block__btns').appendChild($buttonRemove)
+	buttonRemove.appendChild($imgBtnRemove);
 }
 
 
-addButton.addEventListener('click', () => {
-	input.value === '' ? input.required = true : addItemList();
-});
-
-
-
-wrapListBlock.addEventListener('click', function (event) {
+listBlock.addEventListener('click', function (event) {
 	const target = event.target;
-	const listItem = target.closest('.list-block__item');
-	const check = listItem.querySelector('.list-block__item-text');
 
-	if (target.classList.contains('check') || target.classList.contains('checkImg')) {
-		listItem.classList.toggle('check');
-	} else if (target.classList.contains('cross') || target.classList.contains('crossImg')) {
-		listItem.classList.add('remove');
-	} else if (target.classList.contains('edit') || target.classList.contains('editImg')) {
-		check.contentEditable = true;
-		check.focus();
-	} else {
-		check.contentEditable = false;
+	if (target.classList.contains('done') || target.classList.contains('check-img')) {
+		const parentItem = target.closest('.list-block__item');
+		parentItem.classList.toggle('check');
+		if (buttonHide.classList.contains('hide')) {
+			parentItem.classList.add('hidden');
+		}
 	}
 
+	if (target.classList.contains('remove') || target.classList.contains('remove-img')) {
+		target.closest('.list-block__item').remove()
+	}
+
+
+	const $blockItem = target.closest('.list-block__item');
+	const $blockBtns = $blockItem.querySelector('.list-block__btns');
+
+
+
+	if (target.classList.contains('edit') || target.classList.contains('edit-img')) {
+		const $createInput = document.createElement('input');
+		$createInput.setAttribute('type', 'text');
+		$createInput.setAttribute('id', 'item-input');
+
+		const getTextItem = target.closest('.list-block__item').querySelector('.list-block__item-text').textContent;
+		$createInput.value = getTextItem;
+
+		const $createText = document.createElement('span');
+		$createText.classList.add('btn-save');
+		$createText.textContent = 'save';
+
+		$blockItem.prepend($createInput);
+		$blockBtns.prepend($createText);
+
+
+		$blockItem.querySelector('.list-block__item-text').classList.add('hidden');
+		$blockItem.querySelector('.list-block__btns .edit').classList.add('hidden');
+		$createInput.focus();
+	}
+
+	if (target.classList.contains('btn-save')) {
+		const getValueInput = $blockItem.querySelector('#item-input').value;
+		$blockItem.querySelector('.list-block__item-text').textContent = getValueInput;
+
+		$blockItem.querySelector('#item-input').remove();
+		$blockItem.querySelector('.list-block__item-text').classList.remove('hidden')
+
+		$blockItem.querySelector('.list-block__btns .edit').classList.remove('hidden');
+		$blockItem.querySelector('.list-block__btns span').remove();
+	}
 })
 
-show.addEventListener('click', function () {
-	const toggleHide = show.classList.toggle('hide');
+
+buttonHide.addEventListener('click', function () {
+	const toggleHide = buttonHide.classList.toggle('hide');
 	const itemBlock = document.querySelectorAll('.list-block__item.check');
 
 	if (toggleHide) {
