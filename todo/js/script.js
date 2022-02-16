@@ -7,14 +7,13 @@ const listBlock = document.querySelector('.list-block');
 const buttonHide = document.querySelector('.block-hide');
 
 
-function createButton(classBtn, scrImg, classImg) {
+function createButton(classBtn, scrImg) {
 	const $button = document.createElement('button');
 	$button.classList.add(classBtn);
 
 	const $imgBtn = document.createElement('img');
 	$imgBtn.setAttribute('src', scrImg);
 	$imgBtn.setAttribute('alt', '');
-	$imgBtn.classList.add(classImg);
 
 	$button.appendChild($imgBtn);
 	return $button;
@@ -26,29 +25,42 @@ function createDiv(classDiv) {
 	return $listBlock;
 }
 
+function createInput(idInput, typeInput) {
+	const $createInput = document.createElement('input');
+	$createInput.setAttribute('id', idInput);
+	$createInput.setAttribute('type', typeInput);
+
+	return $createInput;
+}
+
 
 function createNewItem(text) {
-	const $listBlockItem = createDiv('list-block__item');
-	const $listBlockText = createDiv('list-block__item-text');
-	const $listBlockBtns = createDiv('list-block__btns');
-
-	const appendBlockItem = listBlock.appendChild($listBlockItem);
-	const appendBlockText = appendBlockItem.appendChild($listBlockText);
-	const appendBlockBtns = appendBlockItem.appendChild($listBlockBtns);
+	const appendBlockItem = createDiv('list-block__item');
+	const appendBlockText = appendBlockItem.appendChild(createDiv('list-block__item-text'));
+	const appendBlockBtns = appendBlockItem.appendChild(createDiv('list-block__btns'));
+	const appendInput = appendBlockItem.prepend(createInput('item-input', 'text'));
 
 	appendBlockText.textContent = text;
 
-	appendBlockBtns.appendChild(createButton('edit', 'img/pencil.svg', 'check-img'))
-	appendBlockBtns.appendChild(createButton('done', 'img/check.svg', 'done-img'))
-	appendBlockBtns.appendChild(createButton('remove', 'img/cross.svg', 'remove-img'))
 
+	appendBlockBtns.appendChild(createButton('save', 'img/save.svg'))
+	appendBlockBtns.appendChild(createButton('edit', 'img/pencil.svg'))
+	appendBlockBtns.appendChild(createButton('done', 'img/check.svg'))
+	appendBlockBtns.appendChild(createButton('remove', 'img/cross.svg'))
+
+
+	return appendBlockItem;
 }
 
+
+function appendDomItem(text) {
+	listBlock.appendChild(createNewItem(text));
+}
 
 addButton.addEventListener('click', function () {
 	if (inputText.value !== '') {
 
-		createNewItem(inputText.value);
+		appendDomItem(inputText.value) // добавляет в дом
 
 		inputText.value = '';
 		inputText.focus();
@@ -66,7 +78,7 @@ addButton.addEventListener('click', function () {
 listBlock.addEventListener('click', function (event) {
 	const target = event.target;
 	const $blockItem = target.closest('.list-block__item');
-	const $blockBtns = $blockItem.querySelector('.list-block__btns');
+	const $editInput = $blockItem.querySelector('#item-input');
 	const $blockItemText = $blockItem.querySelector('.list-block__item-text');
 
 	if (target.closest('.done')) {
@@ -85,36 +97,25 @@ listBlock.addEventListener('click', function (event) {
 
 
 	if (target.closest('.edit')) {
-		const $createInput = document.createElement('input');
-		$createInput.setAttribute('type', 'text');
-		$createInput.setAttribute('id', 'item-input');
 
-		const $createText = document.createElement('span');
-		$createText.classList.add('btn-save');
-		$createText.textContent = 'save';
+		$blockItem.classList.add('saved');
+		$editInput.value = $blockItemText.textContent;
+		$editInput.focus();
 
-
-		const getTextItem = $blockItemText.textContent;
-		$createInput.value = getTextItem;
-
-		$blockItem.prepend($createInput);
-		$blockBtns.prepend($createText);
-
-		$blockItemText.classList.add('hidden');
-		$blockItem.querySelector('.edit').classList.add('hidden');
-		$createInput.focus();
 	}
 
-	if (target.closest('.btn-save')) {
-		const getValueInput = $blockItem.querySelector('#item-input').value;
-		$blockItemText.textContent = getValueInput;
+	if (target.closest('.save')) {
 
-		$blockItem.querySelector('#item-input').remove();
-		$blockItemText.classList.remove('hidden')
+		if ($editInput.value !== '') {
+			$blockItem.classList.remove('saved', 'input-err');
+			$blockItemText.textContent = $editInput.value;
 
-		$blockItem.querySelector('.edit').classList.remove('hidden');
-		$blockItem.querySelector('.btn-save').remove();
+		} else {
+			$blockItem.classList.toggle('input-err');
+			$editInput.focus();
+		}
 	}
+
 })
 
 buttonHide.addEventListener('click', function () {

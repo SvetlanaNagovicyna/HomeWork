@@ -146,6 +146,7 @@ button {
 	font: inherit;
 	border: none;
 	outline: none;
+	cursor: pointer;
 }
 
 button:focus {
@@ -195,8 +196,6 @@ video {
 
 
 
-
-
 html {
 	min-height: 100%;
 	height: 100%;
@@ -220,21 +219,18 @@ body {
 	margin: 0;
 }
 
-button {
-	cursor: pointer;
-	border: none;
-	margin: 0;
-	padding: 0;
-
+input::placeholder {
+	color: rgba(216, 221, 171, 0.449);
 }
 
 input:focus {
 	outline: none;
 }
 
-input::placeholder {
-	color: rgba(216, 221, 171, 0.449);
+.hidden {
+	display: none;
 }
+
 
 .wrapper {
 	display: flex;
@@ -247,6 +243,44 @@ input::placeholder {
 	z-index: 0;
 	background: #40403f;
 }
+
+
+.block-hide {
+	position: absolute;
+	top: 2em;
+	right: 2em;
+	width: 4em;
+	height: 4em;
+	background: #fff;
+	border-radius: .4em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	transition: all .3s ease-in-out;
+}
+
+.block-hide img {
+	width: 3em;
+	height: 3em;
+}
+
+.block-hide:hover {
+	background: rgba(238, 251, 97, 0.7);
+}
+
+.block-hide.hide {
+	background: #edfb61;
+}
+
+
+/* Для скрытия выполненых */
+
+.list-block.hide .list-block__item.check {
+	display: none;
+}
+
+
 
 
 .title {
@@ -279,6 +313,23 @@ input::placeholder {
 	color: #f7ffa9;
 }
 
+.error {
+	font-size: 1.5em;
+	color: red;
+	margin-top: 0.4em;
+	position: absolute;
+	left: 0;
+	bottom: -1.3em;
+	display: none;
+	transition: .3s ease-in;
+
+}
+
+.input-error~.error {
+	display: block;
+}
+
+
 
 .header-block__btns button {
 	border: none;
@@ -294,21 +345,17 @@ input::placeholder {
 	font-weight: 600;
 	color: #edfb61;
 
-
 }
-
-.list-block.hide .list-block__item.check {
-	display: none;
-}
-
-
-
 
 .header-block__btns button img {
 	width: .8em;
 	height: .8em;
 	margin-left: 0.4em;
 }
+
+
+
+/* Блок списка */
 
 .list-block__item {
 	font-size: 2.5em;
@@ -318,17 +365,15 @@ input::placeholder {
 	align-items: center;
 	width: 25em;
 	background: #242424;
-	/* padding: 0 0.8em; */
-	color: #edfb61;
-	font-style: italic;
 	margin: .05em 0;
 	position: relative;
 }
 
-.list-block__item-text {
-	padding-left: .8em;
+.list-block__item.input-err {
+	outline: .1em solid red;
 }
 
+/* Стили при нажатии на Done */
 
 .list-block__item.check {
 	background: #131312;
@@ -339,9 +384,30 @@ input::placeholder {
 	opacity: .5;
 }
 
-.list-block__item.remove {
+
+/* Скрытый input для редактирования */
+
+#item-input {
+	background: transparent;
+	height: 100%;
+	width: 100%;
+	border: 0;
+	outline: none;
+	padding-left: .8em;
+	font-style: italic;
+	color: #aaad86;
+	padding-bottom: .1em;
 	display: none;
 }
+
+
+
+.list-block__item-text {
+	color: #edfb61;
+	font-style: italic;
+	padding-left: .8em;
+}
+
 
 .list-block__btns {
 	display: flex;
@@ -366,102 +432,23 @@ input::placeholder {
 	margin: 0 auto;
 }
 
-.list-block__btns button img.hidden {
+/* Скрытие кнопки Save */
+
+.list-block__btns .save {
 	display: none;
 }
 
 
-.list-block__btns button .editImg {
-	width: 2.3em;
-	height: 2.3em;
-}
 
-.block-hide {
-	position: absolute;
-	top: 2em;
-	right: 2em;
-	width: 4em;
-	height: 4em;
-	background: #fff;
-	border-radius: .4em;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	cursor: pointer;
-	transition: all .3s ease-in-out;
-}
 
-/* .eye:hover {
-	background: #edfb61;
-} */
 
-.hide-img {
-	width: 3em;
-	height: 3em;
-}
-
-.block-hide.hide {
-	background: #edfb61;
-}
-
-.hidden {
-	display: none;
-}
-
-.error {
-	font-size: 1.5em;
-	color: red;
-	margin-top: 0.4em;
-	position: absolute;
-	left: 0;
-	bottom: -1.3em;
-	display: none;
-	transition: .3s ease-in;
-
-}
-
-.input-error~.error {
+.list-block__item.saved #item-input,
+.list-block__item.saved .save {
 	display: block;
 }
 
-#edit-text {
-	margin: 0;
-	border: none;
-	width: 100%;
-	height: 100%;
-	background: transparent;
-	color: #edfb61;
-	/* position: absolute; */
-	font-style: italic;
+.list-block__item.saved .list-block__item-text,
+.list-block__item.saved .edit,
+.list-block__item.saved .done {
 	display: none;
-}
-
-#edit-text.edit {
-	display: flex;
-}
-
-
-
-.list-block__item.check #edit-text {
-	text-decoration: line-through;
-	opacity: .5;
-}
-
-.btn-save {
-	display: block;
-	cursor: pointer;
-	font-size: 0.7em;
-	padding: 0.4em 0.2em 0.6em;
-}
-
-#item-input {
-	background: transparent;
-	height: 100%;
-	width: 100%;
-	border: 0;
-	outline: none;
-	padding-left: .8em;
-	font-style: italic;
-	color: #aaad86;
-	padding-bottom: .1em;
 }
