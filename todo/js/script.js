@@ -5,9 +5,6 @@ const inputText = document.querySelector('#new-text');
 const addButton = document.querySelector('#add');
 const listBlock = document.querySelector('.list-block');
 const buttonHide = document.querySelector('.block-hide');
-const buttonEdit = document.querySelector('.edit');
-const buttonDone = document.querySelector('.done');
-const buttonRemove = document.querySelector('.remove');
 
 
 addButton.addEventListener('click', function () {
