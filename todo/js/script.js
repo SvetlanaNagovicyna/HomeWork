@@ -90,6 +90,8 @@ function createButtonRemove() {
 
 listBlock.addEventListener('click', function (event) {
 	const target = event.target;
+	const $blockItem = target.closest('.list-block__item');
+	const $blockBtns = $blockItem.querySelector('.list-block__btns');
 
 	if (target.classList.contains('done') || target.classList.contains('check-img')) {
 		const parentItem = target.closest('.list-block__item');
@@ -99,14 +101,10 @@ listBlock.addEventListener('click', function (event) {
 		}
 	}
 
+
 	if (target.classList.contains('remove') || target.classList.contains('remove-img')) {
 		target.closest('.list-block__item').remove()
 	}
-
-
-	const $blockItem = target.closest('.list-block__item');
-	const $blockBtns = $blockItem.querySelector('.list-block__btns');
-
 
 
 	if (target.classList.contains('edit') || target.classList.contains('edit-img')) {
@@ -141,7 +139,6 @@ listBlock.addEventListener('click', function (event) {
 		$blockItem.querySelector('.list-block__btns span').remove();
 	}
 })
-
 
 buttonHide.addEventListener('click', function () {
 	const toggleHide = buttonHide.classList.toggle('hide');
