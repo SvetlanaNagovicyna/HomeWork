@@ -297,6 +297,13 @@ input::placeholder {
 
 }
 
+.list-block.hide .list-block__item.check {
+	display: none;
+}
+
+
+
+
 .header-block__btns button img {
 	width: .8em;
 	height: .8em;
