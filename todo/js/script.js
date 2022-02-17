@@ -25,9 +25,8 @@ function createDiv(classDiv) {
 	return $listBlock;
 }
 
-function createInput(idInput, typeInput) {
+function createInput(typeInput) {
 	const $createInput = document.createElement('input');
-	$createInput.setAttribute('id', idInput);
 	$createInput.setAttribute('type', typeInput);
 
 	return $createInput;
@@ -38,7 +37,7 @@ function createNewItem(text) {
 	const appendBlockItem = createDiv('list-block__item');
 	const appendBlockText = appendBlockItem.appendChild(createDiv('list-block__item-text'));
 	const appendBlockBtns = appendBlockItem.appendChild(createDiv('list-block__btns'));
-	const appendInput = appendBlockItem.prepend(createInput('item-input', 'text'));
+	appendBlockItem.prepend(createInput('text'));
 
 	appendBlockText.textContent = text;
 
@@ -78,8 +77,10 @@ addButton.addEventListener('click', function () {
 listBlock.addEventListener('click', function (event) {
 	const target = event.target;
 	const $blockItem = target.closest('.list-block__item');
-	const $editInput = $blockItem.querySelector('#item-input');
+	const $editInput = $blockItem.querySelector('.list-block__item.saved input');
 	const $blockItemText = $blockItem.querySelector('.list-block__item-text');
+	console.log($blockItemText.textContent);
+
 
 	if (target.closest('.done')) {
 		const parentItem = $blockItem;
