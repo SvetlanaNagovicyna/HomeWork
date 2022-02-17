@@ -402,7 +402,6 @@ input:focus {
 	font-style: italic;
 	color: #aaad86;
 	padding-bottom: .1em;
-	display: none;
 }
 
 
@@ -447,7 +446,6 @@ input:focus {
 
 
 
-.list-block__item.saved input,
 .list-block__item.saved .save {
 	display: block;
 }

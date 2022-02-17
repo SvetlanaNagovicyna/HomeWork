@@ -37,7 +37,7 @@ function createNewItem(text) {
 	const appendBlockItem = createDiv('list-block__item');
 	const appendBlockText = appendBlockItem.appendChild(createDiv('list-block__item-text'));
 	const appendBlockBtns = appendBlockItem.appendChild(createDiv('list-block__btns'));
-	appendBlockItem.prepend(createInput('text'));
+	// appendBlockItem.prepend(createInput('text'));
 
 	appendBlockText.textContent = text;
 
@@ -53,7 +53,11 @@ function createNewItem(text) {
 
 
 function appendDomItem(text) {
-	listBlock.appendChild(createNewItem(text));
+	return listBlock.appendChild(createNewItem(text));
+}
+
+function appendDomInput(elem) {
+	return elem.prepend(createInput('text'));
 }
 
 addButton.addEventListener('click', function () {
@@ -77,9 +81,8 @@ addButton.addEventListener('click', function () {
 listBlock.addEventListener('click', function (event) {
 	const target = event.target;
 	const $blockItem = target.closest('.list-block__item');
-	const $editInput = $blockItem.querySelector('.list-block__item.saved input');
 	const $blockItemText = $blockItem.querySelector('.list-block__item-text');
-	console.log($blockItemText.textContent);
+	const $editInput = $blockItem.closest('.list-block__item input');
 
 
 	if (target.closest('.done')) {
@@ -98,6 +101,9 @@ listBlock.addEventListener('click', function (event) {
 
 
 	if (target.closest('.edit')) {
+		appendDomInput($blockItem);
+
+		const $editInput = $blockItem.querySelector('.list-block__item input');
 
 		$blockItem.classList.add('saved');
 		$editInput.value = $blockItemText.textContent;
