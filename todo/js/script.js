@@ -52,7 +52,7 @@ function createNewItem(text) {
 
 
 function appendDomItem(text) {
-	return listBlock.appendChild(createNewItem(text));
+	listBlock.appendChild(createNewItem(text));
 }
 
 function appendDomInput(elem) {
@@ -85,10 +85,10 @@ listBlock.addEventListener('click', function (event) {
 	const $blockItemText = $blockItem.querySelector('.list-block__item-text');
 
 
-
 	if (target.closest('.done')) {
 		const parentItem = $blockItem;
 		parentItem.classList.toggle('check');
+
 		if (buttonHide.classList.contains('hide')) {
 			parentItem.classList.add('hidden');
 		}
@@ -102,19 +102,26 @@ listBlock.addEventListener('click', function (event) {
 
 
 	if (target.closest('.edit')) {
-		const $editInput = appendDomInput($blockItem);
 
-		$blockItem.classList.add('saved');
+		if (!$blockItem.classList.contains('check')) {
+			const $editInput = appendDomInput($blockItem);
 
-		$editInput.value = $blockItemText.textContent;
-		$editInput.focus();
+			$blockItem.classList.add('saved');
+
+			$editInput.value = $blockItemText.textContent;
+			$editInput.focus();
+		}
 
 	}
 
 	if (target.closest('.save')) {
+
 		const $editInput = $blockItem.querySelector('input');
 
+
 		if ($editInput.value !== '') {
+
+
 			$blockItem.classList.remove('saved', 'input-err');
 			$blockItemText.textContent = $editInput.value;
 			$editInput.remove();
@@ -123,6 +130,7 @@ listBlock.addEventListener('click', function (event) {
 			$blockItem.classList.toggle('input-err');
 			$editInput.focus();
 		}
+
 	}
 
 })
