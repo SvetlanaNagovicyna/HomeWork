@@ -386,7 +386,7 @@ input:focus {
 
 .list-block__item.check .edit {
 	/* pointer-events: none; */
-	opacity: .7;
+	opacity: .3;
 }
 
 
