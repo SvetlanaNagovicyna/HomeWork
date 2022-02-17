@@ -25,9 +25,8 @@ function createDiv(classDiv) {
 	return $listBlock;
 }
 
-function createInput(idInput, typeInput) {
+function createInput(typeInput) {
 	const $createInput = document.createElement('input');
-	$createInput.setAttribute('id', idInput);
 	$createInput.setAttribute('type', typeInput);
 
 	return $createInput;
@@ -38,7 +37,6 @@ function createNewItem(text) {
 	const appendBlockItem = createDiv('list-block__item');
 	const appendBlockText = appendBlockItem.appendChild(createDiv('list-block__item-text'));
 	const appendBlockBtns = appendBlockItem.appendChild(createDiv('list-block__btns'));
-	const appendInput = appendBlockItem.prepend(createInput('item-input', 'text'));
 
 	appendBlockText.textContent = text;
 
@@ -55,6 +53,12 @@ function createNewItem(text) {
 
 function appendDomItem(text) {
 	listBlock.appendChild(createNewItem(text));
+}
+
+function appendDomInput(elem) {
+	const newInput = createInput('text');
+	elem.prepend(newInput);
+	return newInput;
 }
 
 addButton.addEventListener('click', function () {
@@ -78,12 +82,13 @@ addButton.addEventListener('click', function () {
 listBlock.addEventListener('click', function (event) {
 	const target = event.target;
 	const $blockItem = target.closest('.list-block__item');
-	const $editInput = $blockItem.querySelector('#item-input');
 	const $blockItemText = $blockItem.querySelector('.list-block__item-text');
+
 
 	if (target.closest('.done')) {
 		const parentItem = $blockItem;
 		parentItem.classList.toggle('check');
+
 		if (buttonHide.classList.contains('hide')) {
 			parentItem.classList.add('hidden');
 		}
@@ -98,22 +103,34 @@ listBlock.addEventListener('click', function (event) {
 
 	if (target.closest('.edit')) {
 
-		$blockItem.classList.add('saved');
-		$editInput.value = $blockItemText.textContent;
-		$editInput.focus();
+		if (!$blockItem.classList.contains('check')) {
+			const $editInput = appendDomInput($blockItem);
+
+			$blockItem.classList.add('saved');
+
+			$editInput.value = $blockItemText.textContent;
+			$editInput.focus();
+		}
 
 	}
 
 	if (target.closest('.save')) {
 
+		const $editInput = $blockItem.querySelector('input');
+
+
 		if ($editInput.value !== '') {
+
+
 			$blockItem.classList.remove('saved', 'input-err');
 			$blockItemText.textContent = $editInput.value;
+			$editInput.remove();
 
 		} else {
 			$blockItem.classList.toggle('input-err');
 			$editInput.focus();
 		}
+
 	}
 
 })

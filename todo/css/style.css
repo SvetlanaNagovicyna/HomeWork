@@ -384,10 +384,15 @@ input:focus {
 	opacity: .5;
 }
 
+.list-block__item.check .edit {
+	/* pointer-events: none; */
+	opacity: .3;
+}
+
 
 /* Скрытый input для редактирования */
 
-#item-input {
+.list-block__item input {
 	background: transparent;
 	height: 100%;
 	width: 100%;
@@ -397,7 +402,6 @@ input:focus {
 	font-style: italic;
 	color: #aaad86;
 	padding-bottom: .1em;
-	display: none;
 }
 
 
@@ -442,13 +446,14 @@ input:focus {
 
 
 
-.list-block__item.saved #item-input,
+
 .list-block__item.saved .save {
 	display: block;
 }
 
 .list-block__item.saved .list-block__item-text,
 .list-block__item.saved .edit,
+.list-block__item.saved .remove,
 .list-block__item.saved .done {
 	display: none;
 }
