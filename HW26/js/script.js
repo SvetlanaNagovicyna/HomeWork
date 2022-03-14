@@ -12,10 +12,10 @@
 const $img = document.querySelector('.image img');
 
 
-$img.addEventListener('mousemove', e => {
+$img.addEventListener('mousemove', () => {
 	$img.style.transform = 'rotate(180deg)';
 })
 
-$img.addEventListener('mouseout', e => {
+$img.addEventListener('mouseout', () => {
 	$img.style.transform = 'rotate(0deg)';
 })
