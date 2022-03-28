@@ -14,36 +14,53 @@ attendance
 
 */
 
-function Student(firstName, lastName, born, grade) {
+function Student(firstName, lastName, born) {
 	this.firstName = firstName;
 	this.lastName = lastName;
 	this.born = born;
-	this.grade = grade;
-	this.visits = [];
+	this.grade = [];
+	this.visits = new Array(25);
 
 }
+
 
 Student.prototype.age = function () {
-	return 2022 - this.born;
+	return new Date().getFullYear() - this.born;
 }
+
 Student.prototype.gpa = function () {
 	const summ = this.grade.reduce(function (prev, current) {
 		return prev + current;
 	}, 0)
 	return Math.floor(summ / this.grade.length)
 }
+
+Student.prototype.gradeArray = function (max, min) {
+	for (var i = 0; i < 8; i++) {
+		this.grade.push(Math.round(((Math.random() * (max - min) + min))) * 10);
+	}
+	return this.grade;
+
+}
+
 Student.prototype.present = function () {
-	return this.visits.push(true);
+	for (let i = 0; i < this.visits.length; i++) {
+		if (this.visits[i] === undefined) {
+			this.visits[i] = true;
+			break;
+		}
+	}
+
 }
 Student.prototype.absent = function () {
-	return this.visits.push(false);
-}
-Student.prototype.lengthVisits = function () {
-	if (this.visits.length > 4) {
-		this.visits.length = 4;
+	for (let i = 0; i < this.visits.length; i++) {
+		if (this.visits[i] === undefined) {
+			this.visits[i] = false;
+			break;
+		}
 	}
-	return this.visits;
 }
+
 Student.prototype.averageVisit = function () {
 	const summ2 = this.visits.reduce(function (prev, current) {
 		return current ? prev += 1 : prev += 0;
@@ -51,14 +68,14 @@ Student.prototype.averageVisit = function () {
 	return summ2 / this.visits.length
 }
 Student.prototype.summary = function () {
-	if (student.gpa() > 90) {
-		if (student.averageVisit() > 0.9) {
+	if (student.gpa() >= 90) {
+		if (student.averageVisit() >= 0.9) {
 			console.log("Ути какой молодчинка!")
 		} else {
 			console.log("Норм, но можно лучше")
 		}
 	} else {
-		if (student.averageVisit() > 0.9) {
+		if (student.averageVisit() >= 0.9) {
 			console.log("Норм, но можно лучше")
 		} else {
 			console.log("Редиска!")
@@ -66,14 +83,36 @@ Student.prototype.summary = function () {
 	}
 }
 
-const student = new Student('Светлана', 'Наговицына', 1995, [80, 90, 100, 100, 90, 95, 80, 100]);
+const student = new Student('Светлана', 'Наговицына', 1995);
 
 console.log(student);
 console.log(student.age());
+console.log(student.gradeArray(10, 8.5));
 console.log(student.gpa());
 console.log(student.present());
 console.log(student.present());
 console.log(student.present());
 console.log(student.present());
+console.log(student.present());
+console.log(student.present());
+console.log(student.present());
+console.log(student.present());
+console.log(student.present());
+console.log(student.present());
+console.log(student.present());
+console.log(student.present());
+console.log(student.present());
+console.log(student.present());
+console.log(student.present());
+console.log(student.present());
+console.log(student.present());
+console.log(student.present());
+console.log(student.present());
+console.log(student.present());
+console.log(student.present());
+console.log(student.present());
+console.log(student.present());
+console.log(student.absent());
+console.log(student.absent());
 console.log(student.averageVisit());
 console.log(student.summary());
