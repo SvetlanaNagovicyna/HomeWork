@@ -89,30 +89,13 @@ console.log(student);
 console.log(student.age());
 console.log(student.gradeArray(10, 8.5));
 console.log(student.gpa());
-console.log(student.present());
-console.log(student.present());
-console.log(student.present());
-console.log(student.present());
-console.log(student.present());
-console.log(student.present());
-console.log(student.present());
-console.log(student.present());
-console.log(student.present());
-console.log(student.present());
-console.log(student.present());
-console.log(student.present());
-console.log(student.present());
-console.log(student.present());
-console.log(student.present());
-console.log(student.present());
-console.log(student.present());
-console.log(student.present());
-console.log(student.present());
-console.log(student.present());
-console.log(student.present());
-console.log(student.present());
-console.log(student.present());
-console.log(student.absent());
-console.log(student.absent());
+
+for (let i = 0; i < 23; i++) {
+	student.present();
+}
+for (let i = 0; i < 2; i++) {
+	student.absent();
+}
+
 console.log(student.averageVisit());
-console.log(student.summary());
+student.summary();
