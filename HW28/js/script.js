@@ -20,9 +20,7 @@ function Student(firstName, lastName, born) {
 	this.born = born;
 	this.grade = [];
 	this.visits = new Array(25);
-
 }
-
 
 Student.prototype.age = function () {
 	return new Date().getFullYear() - this.born;
@@ -97,11 +95,10 @@ for (let i = 0; i < 2; i++) {
 	student.absent();
 }
 
+
+
 console.log(student.averageVisit());
 student.summary();
-
-
-
 
 
 const student2 = new Student('Светлана 2', 'Наговицына 2', 1996);
