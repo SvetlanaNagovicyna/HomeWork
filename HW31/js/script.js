@@ -155,7 +155,7 @@ Group.prototype.attendance = function (arg) {
 			if (arg === item.lastName) {
 				return indexPersonVisits = i + 1;
 			} else {
-				return indexPersonMarks = 'Такого студента нет в этой группе'
+				return indexPersonVisits = 'Такого студента нет в этой группе'
 			}
 		})
 		return indexPersonVisits;
