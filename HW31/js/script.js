@@ -162,7 +162,7 @@ Group.prototype.performance = function (arg) {
 		this.sort(function (a, b) {
 			return b.gpa() - a.gpa()
 		})
-		let indexPerson = this.findIndex(item => item.lastName == arg);
+		let indexPerson = this.findIndex(item => item.lastName === arg);
 		return this.findIndexPerson(indexPerson)
 
 	} else {
