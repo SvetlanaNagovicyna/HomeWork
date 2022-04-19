@@ -139,17 +139,17 @@ function Group() {};
 Group.prototype = [];
 
 
-Group.prototype.attendance = function (arg1) {
+Group.prototype.attendance = function (arg) {
 
-	if (arg1) {
+	if (arg) {
 		this.sort(function (a, b) {
 			return b.averageVisit() - a.averageVisit()
 		})
-		let indexPerson1 = this.findIndex(item => item.lastName == arg1);
-		if (indexPerson1 === -1) {
+		let indexPerson = this.findIndex(item => item.lastName == arg);
+		if (indexPerson === -1) {
 			return 'Такого студента нет в этой группе'
 		} else {
-			return indexPerson1 + 1
+			return indexPerson + 1
 		}
 
 	} else {
@@ -160,16 +160,16 @@ Group.prototype.attendance = function (arg1) {
 	}
 }
 
-Group.prototype.performance = function (arg2) {
-	if (arg2) {
+Group.prototype.performance = function (arg) {
+	if (arg) {
 		this.sort(function (a, b) {
 			return b.gpa() - a.gpa()
 		})
-		let indexPerson2 = this.findIndex(item => item.lastName == arg2);
-		if (indexPerson2 === -1) {
+		let indexPerson = this.findIndex(item => item.lastName == arg);
+		if (indexPerson === -1) {
 			return 'Такого студента нет в этой группе'
 		} else {
-			return indexPerson2 + 1
+			return indexPerson + 1
 		}
 
 	} else {
