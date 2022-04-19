@@ -139,52 +139,46 @@ function Group() {};
 Group.prototype = [];
 
 
-Group.prototype.attendance = function (arg) {
-	if (arg === undefined) {
+Group.prototype.attendance = function (arg1) {
+
+	if (arg1) {
+		this.sort(function (a, b) {
+			return b.averageVisit() - a.averageVisit()
+		})
+		let indexPerson1 = this.findIndex(item => item.lastName == arg1);
+		if (indexPerson1 === -1) {
+			return 'Такого студента нет в этой группе'
+		} else {
+			return indexPerson1 + 1
+		}
+
+	} else {
 		const summ = this.reduce((acc, item) => {
 			return acc + item.visits[0];
 		}, 0)
 		return summ / this.length;
-	} else {
-		const sortVisits = this.sort(function (a, b) {
-			return b.averageVisit() - a.averageVisit()
-		})
-
-		let indexPersonVisits;
-		sortVisits.forEach(function (item, i) {
-			if (arg === item.lastName) {
-				return indexPersonVisits = i + 1;
-			} else {
-				return indexPersonVisits = 'Такого студента нет в этой группе'
-			}
-		})
-		return indexPersonVisits;
 	}
 }
 
-Group.prototype.performance = function (argPerformance) {
-	if (argPerformance === undefined) {
+Group.prototype.performance = function (arg2) {
+	if (arg2) {
+		this.sort(function (a, b) {
+			return b.gpa() - a.gpa()
+		})
+		let indexPerson2 = this.findIndex(item => item.lastName == arg2);
+		if (indexPerson2 === -1) {
+			return 'Такого студента нет в этой группе'
+		} else {
+			return indexPerson2 + 1
+		}
+
+	} else {
 		const summ = this.reduce((acc, item) => {
 			return acc + item.grade[0];
 		}, 0)
 		return summ / this.length;
-	} else {
-		const sortMarks = this.sort(function (a, b) {
-			return b.gpa() - a.gpa()
-		})
-		let indexPersonMarks;
-		sortMarks.forEach(function (item, i) {
-			if (argPerformance === item.lastName) {
-				indexPersonMarks = i + 1;
-				return indexPersonMarks
-			} else {
-				return indexPersonMarks = 'Такого студента нет в этой группе'
-			}
-		})
-		return indexPersonMarks;
 	}
 }
-
 
 
 
@@ -198,8 +192,15 @@ group.push(student5)
 
 console.log(group)
 
-console.log('Место студента в рейтинге посещаемости:  ' + group.attendance('Наговицына2'))
+console.log('Место студента в рейтинге посещаемости Наговицына2: ' + group.attendance('Наговицына2'))
 console.log('Cредняя посещаемость группы за одно занятие: ' + group.attendance())
 
+console.log('-------------------------')
+
 console.log('Место студента в рейтинге оценок:  ' + group.performance('Наговицына'))
+console.log('Cредняя оценка группы за одно занятие: ' + group.performance())
+
+console.log('-------------------------')
+
+console.log('Место студента в рейтинге оценок:  ' + group.performance('Наговицына10'))
 console.log('Cредняя оценка группы за одно занятие: ' + group.performance())
