@@ -145,12 +145,8 @@ Group.prototype.attendance = function (arg) {
 		this.sort(function (a, b) {
 			return b.averageVisit() - a.averageVisit()
 		})
-		let indexPerson = this.findIndex(item => item.lastName == arg);
-		if (indexPerson === -1) {
-			return 'Такого студента нет в этой группе'
-		} else {
-			return indexPerson + 1
-		}
+		let indexPerson = this.findIndex(item => item.lastName === arg);
+		return this.findIndexPerson(indexPerson)
 
 	} else {
 		const summ = this.reduce((acc, item) => {
@@ -160,23 +156,30 @@ Group.prototype.attendance = function (arg) {
 	}
 }
 
+
 Group.prototype.performance = function (arg) {
 	if (arg) {
 		this.sort(function (a, b) {
 			return b.gpa() - a.gpa()
 		})
 		let indexPerson = this.findIndex(item => item.lastName == arg);
-		if (indexPerson === -1) {
-			return 'Такого студента нет в этой группе'
-		} else {
-			return indexPerson + 1
-		}
+		return this.findIndexPerson(indexPerson)
 
 	} else {
 		const summ = this.reduce((acc, item) => {
 			return acc + item.grade[0];
 		}, 0)
 		return summ / this.length;
+	}
+}
+
+
+// этот метод(дополнительный) не обязательный, можно всё сделать внутри основных методов
+Group.prototype.findIndexPerson = function (param) {
+	if (param === -1) {
+		return 'Такого студента нет в этой группе'
+	} else {
+		return param + 1
 	}
 }
 
@@ -191,7 +194,6 @@ group.push(student4)
 group.push(student5)
 
 console.log(group)
-
 console.log('Место студента в рейтинге посещаемости Наговицына2: ' + group.attendance('Наговицына2'))
 console.log('Cредняя посещаемость группы за одно занятие: ' + group.attendance())
 
