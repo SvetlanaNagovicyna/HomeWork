@@ -197,38 +197,38 @@ class Hamburger {
 	static SIZE_SMALL = {
 		price: 50,
 		calories: 20
-	}
+	};
 	static SIZE_BIG = {
 		price: 100,
 		calories: 40
-	}
+	};
 	static STUFFING_CHEESE = {
 		price: 10,
 		calories: 20
-	}
+	};
 	static STUFFING_SALAD = {
 		price: 20,
 		calories: 5
-	}
+	};
 	static STUFFING_POTATO = {
 		price: 15,
 		calories: 10
-	}
+	};
 	static TOPPING_MAYO = {
 		price: 20,
 		calories: 5
-	}
+	};
 	static TOPPING_SPICE = {
 		price: 15,
 		calories: 0
 	}
 	calculatePrice() {
-		this.components.reduce(function (prev, item) {
+		return this.components.reduce(function (prev, item) {
 			return prev + item.price;
 		}, 0)
 	}
 	calculateCalories() {
-		this.components.reduce(function (prev, item) {
+		return this.components.reduce(function (prev, item) {
 			return prev + item.calories;
 		}, 0)
 	}
@@ -239,7 +239,7 @@ class Hamburger {
 
 }
 
-var hamburger = new Hamburger(Hamburger.SIZE_SMALL, Hamburger.STUFFING_CHEESE, Hamburger.STUFFING_SALAD);
+const hamburger = new Hamburger(Hamburger.SIZE_SMALL, Hamburger.STUFFING_CHEESE, Hamburger.STUFFING_SALAD);
 
 console.log(hamburger)
 
