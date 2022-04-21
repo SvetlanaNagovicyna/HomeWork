@@ -234,7 +234,7 @@ class Hamburger {
 	}
 
 	addTopping(...topping) {
-		return this.components.concat(topping)
+		this.components.concat(topping)
 	}
 
 }
