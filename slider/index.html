@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Slider</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="title">brilliant slider</div>
+		<div class="content">
+			<div class="slider mySlider">
+				<div class="slider_wrapper slider_box">
+					<div class="slider-slide">
+						<img src="img/1.jpg" alt="">
+					</div>
+					<div class="slider-slide">
+						<img src="img/2.jpg" alt="">
+					</div>
+					<div class="slider-slide">
+						<img src="img/3.jpg" alt="">
+					</div>
+					<div class="slider-slide">
+						<img src="img/4.jpg" alt="">
+					</div>
+					<div class="slider-slide">
+						<img src="img/5.jpg" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="js/script.js"></script>
+	<script>
+		var sliderUnder = new Slider('.mySlider', {
+			dots: true,
+			arrows: true,
+			infinity: false
+
+		});
+	</script>
+</body>
+
+</html>
+
+
+
+<!-- дивись, роби слайдер такий, щоб типу перекидвася активний клас, як в мене в цьому, і щоб були ще класи на наступному
+слайді і попередньому, щоб в слайдері були ці дотси знизу, стрілочки, можливість показувати і не показувати дотси і
+стрілочки, щоб можна було свої стрілочки задавати (передавати рядком html код), щоб в слайдер була можливість
+зациклиння, типу по кругу щоб кртуився і шоб був автоплей, слайди самі крутились -->
