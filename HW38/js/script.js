@@ -9,20 +9,11 @@
 const $input = document.querySelector('input');
 const $list = document.querySelectorAll('li');
 
-function findTxt() {
+
+$input.addEventListener('input', () => {
 	$list.forEach(el => {
 		el.textContent.toLowerCase().includes($input.value.toLowerCase()) ?
 			el.style.display = "block" :
 			el.style.display = "none";
 	})
-}
-
-findTxt();
-
-$input.addEventListener('input', () => {
-	findTxt();
-});
-
-$input.addEventListener('change', () => {
-	findTxt();
 });
