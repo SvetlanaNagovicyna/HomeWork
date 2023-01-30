@@ -9,7 +9,6 @@ const input = document.querySelector('.value');
 const sale = document.querySelector('.sale .value');
 const purchase = document.querySelector('.purchase .value');
 const select = document.querySelector('#currency');
-const btns = document.querySelectorAll('button');
 const url = 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json';
 
 
