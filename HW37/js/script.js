@@ -56,8 +56,10 @@ xhr.onload = function () {
 
 
 function calc() {
-	sale.textContent = (select.value * input.value).toFixed(2) + ' ₴';
-	purchase.textContent = ((Number(select.value) + select.value / 100 * 7) * input.value).toFixed(2) + ' ₴';
+	const selectValue = select.value;
+	const inputValue = input.value;
+	sale.textContent = (selectValue * inputValue).toFixed(2) + ' ₴';
+	purchase.textContent = ((Number(selectValue) + selectValue / 100 * 7) * inputValue).toFixed(2) + ' ₴';
 }
 
 select.addEventListener('change', (e) => {
