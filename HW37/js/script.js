@@ -6,23 +6,22 @@
 
 
 const input = document.querySelector('.value');
-const total = document.querySelector('.total');
+const sale = document.querySelector('.sale .value');
+const purchase = document.querySelector('.purchase .value');
 const select = document.querySelector('#currency');
 const btns = document.querySelectorAll('button');
-const url = 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json'
+const url = 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json';
 
 
 
 // fetch(url)
 // 	.then(response => response.json())
 // 	.then(data => {
-// 		console.log(data)
 // 		data.forEach(el => {
 // 			const $option = document.createElement('option');
 // 			$option.innerHTML = el.cc + ' (' + el.txt + ')'
 // 			$option.value = el.rate;
 // 			select.appendChild($option);
-// 			calc();
 // 		})
 // 	});
 
@@ -35,7 +34,6 @@ const url = 'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json'
 // 		$option.innerHTML = el.cc + ' (' + el.txt + ')'
 // 		$option.value = el.rate;
 // 		select.appendChild($option);
-// 		calc();
 // 	})
 // });
 
@@ -52,47 +50,21 @@ xhr.onload = function () {
 			$option.innerHTML = el.cc + ' (' + el.txt + ')'
 			$option.value = el.rate;
 			select.appendChild($option);
-			calc();
 		})
 	}
 }
 
 
+
 function calc() {
-	const option = document.querySelectorAll('#currency option');
-	const inputValue = input.value;
-	let totalValue;
-
-	option.forEach(el => {
-		if (el.selected === true) {
-			totalValue = el.value * inputValue;
-			total.textContent = totalValue.toFixed(2) + ' ₴';
-		}
-	})
-
-	btns.forEach(btn => {
-		btn.addEventListener('click', elem => {
-			option.forEach(el => {
-				if (el.selected === true) {
-					let totalValue;
-					if (elem.target.id === 'purchase') {
-						totalValue = el.value * inputValue;
-					} else {
-						totalValue = (Number(el.value) + el.value / 100 * 7) * inputValue;
-					}
-					total.textContent = totalValue.toFixed(2) + ' ₴';
-				}
-			})
-		})
-	})
+	sale.textContent = (select.value * input.value).toFixed(2) + ' ₴';
+	purchase.textContent = ((Number(select.value) + select.value / 100 * 7) * input.value).toFixed(2) + ' ₴';
 }
-calc();
 
-
-input.addEventListener('input', () => {
+select.addEventListener('change', (e) => {
 	calc();
-});
+})
 
-select.addEventListener('change', () => {
+input.addEventListener('input', (e) => {
 	calc();
 });

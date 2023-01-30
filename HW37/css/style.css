@@ -48,7 +48,8 @@ select {
 	margin-top: 2em;
 }
 
-.total {
+.purchase,
+.sale {
 	text-align: left;
 	margin-top: 1em;
 	font-weight: bold;
